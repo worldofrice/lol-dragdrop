@@ -47,23 +47,33 @@ function startGame() {
     .then(data=>{
         const champions = data.data;
         data.data;
-        console.log(champions);
-        for (const champion in champions) {
+        let championsArray = Object.keys(champions);
+        let randomChampions = [];
+        for(let i = 0; i < 10; i++){
+            let randomIndex = Math.floor(Math.random() * championsArray.length);
+            randomChampions.push(champions[championsArray[randomIndex]]);
+            championsArray.splice(randomIndex, 1);
+        }
+        console.log(randomChampions)
+        for (let i = 0; i < randomChampions.length; i++) {
+            let champion = randomChampions[i];
             let dragbox = document.createElement("div");
     
-            dragbox.textContent = champion;
+            dragbox.textContent = champion.id;
             dragbox.classList.add("draggable");
-            dragbox.id = `${champion}_id`;
+            dragbox.id = `${champion.id}_id`;
             dragbox.draggable = true;
     
             document.body.appendChild(dragbox);
         }
-        for (const champion in champions) {
+
+        for (let i = 0; i < randomChampions.length; i++) {
+            let champion = randomChampions[i];
             let champDiv = document.createElement("div");
             let champImg = document.createElement("img");
             let dropbox = document.createElement("div");
 
-            champImg.src = `https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/${champion}.png`;
+            champImg.src = `https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/${champion.id}.png`;
             champDiv.appendChild(champImg);
 
             dropbox.classList.add("droppable");
