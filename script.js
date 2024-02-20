@@ -108,7 +108,6 @@ function startGame() {
             champDiv.classList.add("champion");
 
             dropbox.classList.add("droppable");
-            dropbox.classList.add("dropzone");
 
             champDiv.appendChild(dropbox);
             pictures.appendChild(champDiv);
