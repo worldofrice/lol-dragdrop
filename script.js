@@ -51,6 +51,7 @@ function startGame() {
         }
         console.log(randomChampions)
         for (let i = 0; i < randomChampions.length; i++) {
+            const words = document.querySelector(".words");
             let champion = randomChampions[i];
             let dragbox = document.createElement("div");
     
@@ -59,7 +60,7 @@ function startGame() {
             dragbox.id = `${champion.id}`;
             dragbox.draggable = true;
     
-            document.body.appendChild(dragbox);
+            words.appendChild(dragbox);
         }
 
         let currentIndex = randomChampions.length, temporaryValue, randomIndex;
@@ -73,6 +74,7 @@ function startGame() {
         }
 
         for (let i = 0; i < randomChampions.length; i++) {
+            const pictures = document.querySelector(".pictures");
             let champion = randomChampions[i];
             let champDiv = document.createElement("div");
             let champImg = document.createElement("img");
@@ -86,7 +88,7 @@ function startGame() {
             dropbox.classList.add("dropzone");
 
             champDiv.appendChild(dropbox)
-            document.body.appendChild(champDiv);
+            pictures.appendChild(champDiv);
         }
 
         var draggableElements = document.querySelectorAll(".draggable");
