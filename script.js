@@ -1,4 +1,4 @@
-let championAmount = 10;
+let championAmount = 5;
 
 function dragStart(event) {
     event.dataTransfer.setData("text", event.target.id);
@@ -77,7 +77,7 @@ function startGame() {
             let champion = randomChampions[i];
             let dragbox = document.createElement("div");
     
-            dragbox.textContent = champion.id;
+            dragbox.textContent = champion.name;
             dragbox.classList.add("draggable");
             dragbox.id = `${champion.id}`;
             dragbox.draggable = true;
