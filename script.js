@@ -1,3 +1,5 @@
+let championAmount = 5;
+
 function dragStart(event) {
     event.dataTransfer.setData("text", event.target.id);
 }
@@ -29,10 +31,30 @@ function drop(event) {
         event.target.appendChild(document.getElementById(data));
         event.target.classList.add("dropped");
         event.target.querySelector('div').draggable = false;
+        console.log(document.querySelectorAll(".dropped").length)
+        if (document.querySelectorAll(".dropped").length == championAmount) {
+            startGame()
+        }
     }
 }
 
+function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
+
+function clearGame() {
+    const words = document.querySelector(".words");
+    const pictures = document.querySelector(".pictures");
+    console.log(words)
+    removeAllChildNodes(words)
+    removeAllChildNodes(pictures)
+    console.log("game restarted")
+}
+
 function startGame() {
+    clearGame()
     fetch("https://ddragon.leagueoflegends.com/cdn/14.3.1/data/en_US/champion.json", {
         method: 'GET',
         headers: {
@@ -44,7 +66,7 @@ function startGame() {
         const champions = data.data;
         let championsArray = Object.keys(champions);
         let randomChampions = [];
-        for(let i = 0; i < 10; i++){
+        for(let i = 0; i < championAmount; i++){
             let randomIndex = Math.floor(Math.random() * championsArray.length);
             randomChampions.push(champions[championsArray[randomIndex]]);
             championsArray.splice(randomIndex, 1);
@@ -55,7 +77,7 @@ function startGame() {
             let champion = randomChampions[i];
             let dragbox = document.createElement("div");
     
-            dragbox.textContent = champion.id;
+            dragbox.textContent = champion.name;
             dragbox.classList.add("draggable");
             dragbox.id = `${champion.id}`;
             dragbox.draggable = true;
@@ -86,7 +108,6 @@ function startGame() {
             champDiv.classList.add("champion");
 
             dropbox.classList.add("droppable");
-            dropbox.classList.add("dropzone");
 
             champDiv.appendChild(dropbox);
             pictures.appendChild(champDiv);
@@ -108,4 +129,6 @@ function startGame() {
     })
 }
 
-startGame()
+window.addEventListener('load', function () {
+    startGame()
+})
