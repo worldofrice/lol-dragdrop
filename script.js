@@ -83,11 +83,12 @@ function startGame() {
             champImg.src = `https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/${champion.id}.png`;
             champImg.alt = champion.id;
             champDiv.appendChild(champImg);
+            champDiv.classList.add("champion");
 
             dropbox.classList.add("droppable");
             dropbox.classList.add("dropzone");
 
-            champDiv.appendChild(dropbox)
+            champDiv.appendChild(dropbox);
             pictures.appendChild(champDiv);
         }
 
