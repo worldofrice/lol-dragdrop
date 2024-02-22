@@ -4,6 +4,9 @@ Mäng on League of Legendsi karakterite äraarvamise kohta, see kasutab LOL'i [D
 
 ## Meeskonnaliikmed
 * Marten Haamer
+  - Frontend
 * Gert Veereste
+  - Backend
 * Kristi Kuus
+  - Disain
 
