@@ -87,3 +87,12 @@ h1 {
     border-bottom: 2px wave black;
     color: #cdbe91;
 }
+
+.misses {
+    text-align: center;
+    font-family: 'Marcellus SC', serif;
+    font-size: 40px;
+    font-weight: bold;
+    border-bottom: 2px wave black;
+    color: hsl(357, 52%, 45%);
+}

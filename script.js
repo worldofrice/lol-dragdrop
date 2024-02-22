@@ -1,4 +1,5 @@
 let championAmount = 5;
+let misses = 0;
 
 function dragStart(event) {
     event.dataTransfer.setData("text", event.target.id);
@@ -36,6 +37,10 @@ function drop(event) {
             startGame()
         }
     }
+    else {
+        misses++;
+        document.querySelector(".misses").textContent=`Misses: ${misses}`;
+    }
 }
 
 function removeAllChildNodes(parent) {
@@ -47,6 +52,8 @@ function removeAllChildNodes(parent) {
 function clearGame() {
     const words = document.querySelector(".words");
     const pictures = document.querySelector(".pictures");
+    misses = 0;
+    document.querySelector(".misses").textContent=`Misses: ${misses}`;
     console.log(words)
     removeAllChildNodes(words)
     removeAllChildNodes(pictures)
